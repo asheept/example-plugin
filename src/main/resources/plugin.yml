@@ -1,6 +1,6 @@
 name: ${pluginName}
 version: ${version}
-main: ${group}.${packageName}.plugin.${pluginName}Plugin
+main: io.github.asheept.${pluginName}Plugin
 api-version: 1.19
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}

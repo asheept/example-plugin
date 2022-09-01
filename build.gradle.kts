@@ -44,10 +44,18 @@ tasks {
 
         val jarName = "$pluginName.jar"
         rename { jarName }
-        val plugins = File("./.debug-server/plugins")
+        val plugins = File("C:\\Users\\asheept\\Desktop\\Server\\1.19.2 example\\plugins")
         val plugin = File(plugins, "$pluginName.jar")
+        val update = File(plugins, "update")
 
-        if (plugin.exists())    into(File(plugins, "update"))
-        else                    into(plugins)
+        if (plugin.exists())
+            into(File(plugins, "update"))
+        else
+            into(plugins)
+
+        doLast {
+            update.mkdirs()
+            File(update, "RELOAD").delete()
+        }
     }
 }
