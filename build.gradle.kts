@@ -1,24 +1,22 @@
 plugins {
     kotlin("jvm") version Dependency.Kotlin.Version
-    id("io.papermc.paperweight.userdev") version "1.3.7"
+    id("io.papermc.paperweight.userdev") version "1.5.5"
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-}
-
+group = "io.github.asheept"
+version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
+    maven("https://repo.dmulloy2.net/repository/public/")
 }
 
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
 
-    paperDevBundle("1.19-R0.1-SNAPSHOT")
-    implementation("io.github.monun:kommand-api:2.12.0")
+    implementation("org.slf4j:slf4j-api:2.0.0")
+    paperweight.paperDevBundle("1.20.1-R0.1-SNAPSHOT")
+    implementation("net.kyori:adventure-api:4.14.0")
 }
 
 val pluginName = rootProject.name.split('-').joinToString("") { it.capitalize() }
@@ -26,7 +24,6 @@ val pluginName = rootProject.name.split('-').joinToString("") { it.capitalize() 
 extra.apply {
     set("pluginName", pluginName)
     set("packageName", rootProject.name.replace("-", ""))
-
     set("kotlinVersion", Dependency.Kotlin.Version)
 }
 
@@ -44,7 +41,8 @@ tasks {
 
         val jarName = "$pluginName.jar"
         rename { jarName }
-        val plugins = File("C:\\Users\\asheept\\Desktop\\Server\\1.19.2 example\\plugins")
+        //val plugins = File("C:\\Users\\asheept\\Desktop\\Server\\1.19.2 lore\\plugins")
+        val plugins = File("C:\\Users\\asheep\\Desktop\\server\\1.20.1 paper\\plugins")
         val plugin = File(plugins, "$pluginName.jar")
         val update = File(plugins, "update")
 
